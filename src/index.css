@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Yu-Gi-Oh! Matrix Small Caps 2";
+    src: url("/fonts/Yu-Gi-Oh!-Matrix-Regular-Small-Caps.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
