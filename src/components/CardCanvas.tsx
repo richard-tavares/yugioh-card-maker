@@ -108,8 +108,8 @@ export default function CardCanvas() {
     }, [displayedType, cardData.attribute, cardData.stars, cardData.name, cardData.symbol]);
 
     return (
-        <div className="w-full flex justify-center items-center py-4">
-            <div className="card-wrapper">
+        <div className="w-full sm:w-full md:w-1/2 lg:w-1/3 flex justify-center items-center">
+            <div className="card-wrapper w-full mx-4 mt-10">
                 <div className={`card-inner ${flipped ? "flipped" : ""}`}>
                     <div className="card-face card-back">
                         <img

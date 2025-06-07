@@ -9,8 +9,10 @@ type CardContextType = {
 export const CardContext = createContext<CardContextType>({
     cardData: {
         cardType: "",
-        attribute: "",
         name: "",
+        attribute: "",
+        stars: null,
+        symbol: "",
     },
     setCardData: () => { },
 });
@@ -18,8 +20,10 @@ export const CardContext = createContext<CardContextType>({
 export function CardProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [cardData, setCardData] = useState<CardData>({
         cardType: "",
-        attribute: "",
         name: "",
+        attribute: "",
+        stars: null,
+        symbol: "",
     });
 
     const value = useMemo(() => ({ cardData, setCardData }), [cardData]);
