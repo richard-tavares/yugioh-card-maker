@@ -3,8 +3,7 @@
 
 Crie suas próprias cartas personalizadas de Yu-Gi-Oh! com um visual fiel ao estilo oficial da Konami.
 
-![yugioh-card-maker-screenshot](https://github.com/user-attachments/assets/550e8da7-4ff1-4d4c-ba89-7044dc2b3f29)
-
+![yugioh-card-maker-screenshot](https://github.com/user-attachments/assets/fd46d861-710b-4226-8fa2-57903cd53b6c)
 
 ## Créditos
 
