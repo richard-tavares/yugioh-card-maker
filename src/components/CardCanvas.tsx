@@ -349,8 +349,10 @@ export default function CardCanvas() {
 
     const drawType = (ctx: CanvasRenderingContext2D, template: string) => {
         if (["Spell", "Trap"].includes(template) || !cardData.type) return;
+        const isPendulum = cardData.pendulum === true;
+        const baseX = isPendulum ? 33 : 30;
         drawText(ctx, `[${cardData.type}]`, {
-            x: 30,
+            x: baseX,
             y: BASE_HEIGHT - 137,
             font: "14px 'Yu-Gi-Oh! ITC Stone Serifa Negrito Versalete'",
             color: "#000",
@@ -361,10 +363,10 @@ export default function CardCanvas() {
 
     const drawEffect = (ctx: CanvasRenderingContext2D, safeTemplate: string) => {
         if (!cardData.effect) return;
-
-        const baseX = 28;
+        const isPendulum = cardData.pendulum === true;
+        const baseX = isPendulum ? 33 : 28;
         const baseY = 475;
-        const maxWidth = 363;
+        const maxWidth = isPendulum ? 357 : 363;
         const maxLines = 8;
         let fontSize = 12;
         const minFontSize = 10;
