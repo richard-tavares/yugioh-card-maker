@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Yu-Gi-Oh! Matrix Small Caps 2";
+    src: url("/fonts/Yu-Gi-Oh!-Matrix-Regular-Small-Caps.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Yu-Gi-Oh! ITC Stone Serifa Negrito Versalete";
+    src: url("/fonts/Yu-Gi-Oh!-ITC-Stone-Serif-Small-Caps-Bold.ttf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Yu-Gi-Oh! Matrix Book";
+    src: url("/fonts/Yu-Gi-Oh!-Matrix-Book.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Eurostile Candy W01 Semibold";
+    src: url("/fonts/Eurostile-Candy-W01-Semibold.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+input[readonly],
+select[readonly],
+textarea[readonly] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.no-emoji {
+    font-family: "Segoe UI Symbol", Arial, sans-serif !important;
+}
+
+.font-yugioh {
+    font-family: "Yu-Gi-Oh! Matrix Small Caps 2", serif;
+    font-size: 2rem;
+}
