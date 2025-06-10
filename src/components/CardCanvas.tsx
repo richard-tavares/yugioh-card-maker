@@ -508,7 +508,7 @@ export default function CardCanvas() {
 
     return (
         <div className="w-full md:w-full lg:w-1/3 flex justify-center items-center">
-            <div className="card-wrapper lg:mt-10 lg:mx-5 lg:scale-110 z-2">
+            <div className="card-wrapper lg:mt-10 lg:mx-5 lg:scale-110 lg:z-2">
                 <div className={`card-inner ${flipped ? "flipped" : ""}`}>
                     <div className="card-face card-back">
                         <img
