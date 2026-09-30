@@ -17,10 +17,13 @@ Crie suas próprias cartas personalizadas de Yu-Gi-Oh! com um visual fiel ao est
 
 ```
 yugioh-card-maker/
+├── .github/
+│   └── workflows/       # pipeline de testes e deploy
 ├── public/
 │   ├── fonts/
 │   └── images/
 │       └── card/        # molduras, atributos, estrelas, tipos de Magia/Armadilha e setas
+├── scripts/             # execução dos testes visuais no Docker
 ├── src/
 │   ├── components/      # layout da página, formulário, prévia da carta e campos
 │   ├── contexts/        # estado da carta
@@ -49,15 +52,20 @@ Acesse no navegador: `http://localhost:5173/yugioh-card-maker`
 
 ## 🧪 Testes
 
+Os testes visuais rodam no Linux da imagem oficial do Playwright e precisam do [Docker](https://www.docker.com/products/docker-desktop/) aberto. Os testes de comportamento rodam direto, sem Docker.
+
 ```bash
-# Instale o navegador dos testes (só na primeira vez)
+# Instale o navegador dos testes de comportamento (só na primeira vez)
 npx playwright install chromium
 
-# Todos os testes
-npm test
+# Comportamento do app pelo formulário
+npm run test:app
 
-# Só a regressão visual das cartas
+# Regressão visual das cartas (Docker)
 npm run test:visual
+
+# Todos os testes (Docker)
+npm test
 ```
 
 Os testes visuais desenham um conjunto de cartas e comparam cada pixel com as imagens em `tests/visual/__snapshots__`. Se uma mudança no visual for intencional, confira o resultado com `npx playwright show-report` e regrave as referências com `npm run test:visual:update`.
