@@ -9,11 +9,12 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run lint && npm test && npm run build",
     "deploy": "gh-pages -d dist",
-    "test:visual": "playwright test tests/visual",
-    "test:visual:update": "playwright test tests/visual --update-snapshots",
-    "test": "playwright test"
+    "test": "npm run test:app && npm run test:visual",
+    "test:app": "playwright test tests/app",
+    "test:visual": "node scripts/playwright-docker.mjs test tests/visual",
+    "test:visual:update": "node scripts/playwright-docker.mjs test tests/visual --update-snapshots"
   },
   "dependencies": {
     "react": "^19.1.0",
