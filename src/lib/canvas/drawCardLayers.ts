@@ -174,6 +174,7 @@ export function drawCardLayers(canvas: HTMLCanvasElement, card: Card, assets: Ca
     canvas.width = CARD_WIDTH * scale;
     canvas.height = CARD_HEIGHT * scale;
     context.setTransform(scale, 0, 0, scale, 0, 0);
+    context.textRendering = "geometricPrecision";
 
     drawArt(context, layout, assets);
     if (!assets.frame) return;

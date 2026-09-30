@@ -13,7 +13,10 @@ const CONDENSING_STARTS_AT = 90;
 let measuringContext: CanvasRenderingContext2D | null = null;
 
 function getMeasuringContext() {
-    measuringContext ??= document.createElement("canvas").getContext("2d");
+    if (!measuringContext) {
+        measuringContext = document.createElement("canvas").getContext("2d");
+        if (measuringContext) measuringContext.textRendering = "geometricPrecision";
+    }
     return measuringContext;
 }
 
