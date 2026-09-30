@@ -1,7 +1,8 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import type { ReactNode } from "react";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 
-export default function DefaultLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export function PageLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
         <div className="min-h-screen flex flex-col bg-slate-950 text-white">
             <Header />

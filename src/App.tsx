@@ -1,19 +1,17 @@
-import { CardProvider } from "@/context/CardContext";
-import DefaultLayout from "@/layouts/DefaultLayout";
-import CardCanvas from "@/components/CardCanvas";
-import CardForm from "@/components/CardForm";
+import { CardForm } from "@/components/card/CardForm";
+import { CardPreview } from "@/components/card/CardPreview";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { CardProvider } from "@/contexts/CardProvider";
 
-function App() {
-  return (
-    <CardProvider>
-      <DefaultLayout>
-        <div className="flex flex-wrap justify-center items-start w-full gap-y-4">
-          <CardCanvas />
-          <CardForm />
-        </div>
-      </DefaultLayout>
-    </CardProvider >
-  );
+export function App() {
+    return (
+        <CardProvider>
+            <PageLayout>
+                <div className="flex flex-wrap justify-center items-start w-full gap-y-4">
+                    <CardPreview />
+                    <CardForm />
+                </div>
+            </PageLayout>
+        </CardProvider>
+    );
 }
-
-export default App;
