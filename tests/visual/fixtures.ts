@@ -28,7 +28,14 @@ function textOfLength(length: number): string {
     return cutAtLastWholeWord(sentences.join(" "), length);
 }
 
-const EFFECT_600_CHARS = cutAtLastWholeWord(LONG_EFFECT + " " + LONG_EFFECT, 600);
+const HYPHENATED_TERMS_EFFECT =
+    "Se esta carta for Invocada por Invocação-Normal ou Invocação-Especial: você pode Invocar por Invocação-Especial 1 monstro " +
+    "Invocado por Invocação-Tributo do seu Cemitério, depois você pode Invocar por Invocação-Normal 1 monstro. " +
+    "Durante a Fase Final, devolva à mão os monstros Invocados por Invocação-Especial por este efeito.";
+
+const UNBROKEN_WORD ="InvocaçãoPorInvocaçãoEspecialDoCemitério".repeat(6);
+
+const EFFECT_600_CHARS =cutAtLastWholeWord(LONG_EFFECT + " " + LONG_EFFECT, 600);
 const PENDULUM_EFFECT_300_CHARS = cutAtLastWholeWord(LONG_EFFECT, 300);
 
 const effectMonster: Card = {
@@ -159,4 +166,23 @@ export const fixtures: Record<string, Card> = {
     "calib-spell-record": { ...spellOrTrap("spell", "quick-play"), effect: textOfLength(700) },
     "calib-trap-record": { ...spellOrTrap("trap", "counter"), effect: textOfLength(700) },
     "calib-link-record": { ...linkMonster, linkRating: "2", linkArrows: ["bottom-left", "bottom-right"], effect: textOfLength(700) },
+    "effect-hyphenated-terms": { ...effectMonster, effect: HYPHENATED_TERMS_EFFECT },
+    "pendulum-hyphenated-terms": {
+        ...effectMonster,
+        isPendulum: true,
+        typeLine: "Mago/Pêndulo/Efeito",
+        pendulumEffect: HYPHENATED_TERMS_EFFECT,
+        effect: HYPHENATED_TERMS_EFFECT,
+    },
+    "effect-unbroken-word": {
+        ...effectMonster,
+        effect: `Quando esta carta for Invocada: ${UNBROKEN_WORD} e depois compre 1 card.`,
+    },
+    "pendulum-unbroken-word": {
+        ...effectMonster,
+        isPendulum: true,
+        typeLine: "Mago/Pêndulo/Efeito",
+        pendulumEffect: UNBROKEN_WORD,
+        effect: UNBROKEN_WORD,
+    },
 };

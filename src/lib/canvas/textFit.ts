@@ -36,18 +36,49 @@ const CONDENSE_STEP = 0.025;
 const ELLIPSIS = "…";
 const MAX_JUSTIFY_GAP = 4;
 
+type Segment = {
+    text: string;
+    separator: "" | " ";
+};
+
+const AFTER_INNER_HYPHEN = /(?<=[^\s-]-)(?=[^\s-])/;
+
+function splitWordToFit(context: CanvasRenderingContext2D, word: string, maxWidth: number): string[] {
+    if (context.measureText(word).width <= maxWidth) return [word];
+
+    const pieces: string[] = [];
+    let piece = "";
+
+    for (const character of word) {
+        if (piece && context.measureText(piece + character).width > maxWidth) {
+            pieces.push(piece);
+            piece = character;
+        } else {
+            piece += character;
+        }
+    }
+
+    return [...pieces, piece];
+}
+
+function toSegments(context: CanvasRenderingContext2D, paragraph: string, maxWidth: number): Segment[] {
+    return paragraph.split(" ").flatMap(word => {
+        const pieces = word.split(AFTER_INNER_HYPHEN).flatMap(part => splitWordToFit(context, part, maxWidth));
+        return pieces.map((text, index): Segment => ({ text, separator: index === pieces.length - 1 ? " " : "" }));
+    });
+}
+
 function wrapParagraph(context: CanvasRenderingContext2D, text: string, maxWidth: number): TextLine[] {
-    const words = text.split(" ");
     const lines: TextLine[] = [];
     let line = "";
 
-    for (const word of words) {
-        const testLine = line + word + " ";
+    for (const { text: segment, separator } of toSegments(context, text, maxWidth)) {
+        const testLine = line + segment + separator;
         const testWidth = context.measureText(testLine).width;
 
         if (testWidth > maxWidth && line !== "") {
             lines.push({ text: line.trim(), last: false });
-            line = word + " ";
+            line = segment + separator;
         } else {
             line = testLine;
         }
